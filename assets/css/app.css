@@ -1,0 +1,13 @@
+/* This file is for your main application css. */
+
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "./custom.css";
+
+@import "./phoenix.css";
+
+@import "./live-view.css";
+
+@import "tailwindcss/utilities";
