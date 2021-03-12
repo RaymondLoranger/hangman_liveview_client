@@ -3,9 +3,7 @@ defmodule Hangman.LiveView.ClientWeb.WordSoFarComponent do
 
   def render(assigns) do
     ~L"""
-    <p id="word-so-far">
-      <span><%= Enum.join(@letters, " ") %></span>
-    </p>
+    <p id="word-so-far"><%= Enum.join(@letters, " ") %></p>
     """
   end
 end

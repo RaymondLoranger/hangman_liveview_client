@@ -1,8 +1,11 @@
-<h1>Welcome to Hangman!!</h1>
-<div id="play-field" phx-window-keyup="keyup">
-  <%= live_component @socket, WordSoFarComponent, letters: @letters %>
-  <%= live_component @socket, GuessLettersComponent, guesses: @guesses %>
-  <div class="grid grid-cols-2">
-    <%= live_component @socket, GallowsComponent, turns_left: @turns_left %>
+<div id="hangman">
+  <h1>Welcome to Hangman!!</h1>
+  <div id="main-grid" phx-window-keyup="keyup">
+    <%= live_component @socket, DrawingComponent, turns_left: @turns_left %>
+    <%= live_component @socket, WordSoFarComponent, letters: @letters %>
+    <%= live_component @socket, GuessLettersComponent, guesses: @guesses %>
+    <%= live_component @socket, TurnsLeftComponent, turns_left: @turns_left %>
+    <%= live_component @socket, MessageComponent, message: @message %>
+    <%= live_component @socket, NewGameComponent %>
   </div>
 </div>

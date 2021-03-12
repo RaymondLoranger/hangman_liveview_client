@@ -174,6 +174,9 @@ module.exports = {
           '800': '#99154b',
           '900': '#751a3d',
         }
+      },
+      gridTemplateColumns: {
+        'auto-fit': 'repeat(auto-fit, minmax(3rem, 1fr))'
       }
     }
   },

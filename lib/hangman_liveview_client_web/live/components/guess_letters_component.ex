@@ -4,14 +4,12 @@ defmodule Hangman.LiveView.ClientWeb.GuessLettersComponent do
   def render(assigns) do
     ~L"""
     <div id="guess-letters">
-      <div class="letters-grid">
-        <%= for letter <- ?a..?z do %>
-          <button phx-click="click" phx-value-guess="<%= <<letter>> %>"
-                  <%= if <<letter>> in @guesses, do: "disabled" %>>
-            <%= <<letter>> %>
-          </button>
-        <% end %>
-      </div>
+      <%= for code <- ?a..?z do %>
+        <button phx-click="click" phx-value-guess="<%= <<code>> %>"
+                <%= if <<code>> in @guesses, do: "disabled" %>>
+          <%= <<code>> %>
+        </button>
+      <% end %>
     </div>
     """
   end
