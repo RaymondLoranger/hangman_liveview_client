@@ -3,9 +3,7 @@ defmodule Hangman.LiveView.ClientWeb.TurnsLeftComponent do
 
   def render(assigns) do
     ~L"""
-    <p id="turns-left">
-      Turns left: <%= @turns_left %>
-    </p>
+    <p id="turns-left">Turns left: <%= @turns_left %></p>
     """
   end
 end

@@ -12,6 +12,8 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
     WordSoFarComponent
   }
 
+  alias Phoenix.HTML
+
   require Logger
 
   def mount(_params, _session, socket) do
@@ -28,7 +30,7 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
          letters: tally.letters,
          turns_left: tally.turns_left,
          guesses: [],
-         message: message(tally.game_state, nil)
+         message: message(tally.game_state)
        )}
     else
       {:ok,
@@ -43,15 +45,15 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
   end
 
   def handle_event("click", %{"guess" => guess}, socket) do
-    IO.inspect(guess, label: "+++ letter clicked +++")
-    %{} = tally = Engine.make_move(socket.assigns.game_name, guess)
+    game_name = socket.assigns.game_name
+    %{} = tally = Engine.make_move(game_name, guess)
 
     {:noreply,
      assign(socket,
        letters: tally.letters,
        turns_left: tally.turns_left,
        guesses: tally.guesses,
-       message: message(tally.game_state, guess)
+       message: message(tally.game_state, guess: guess, game_name: game_name)
      )}
   end
 
@@ -62,15 +64,15 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
 
   def handle_event("keyup", %{"key" => <<code>> = key}, socket)
       when code in ?a..?z do
-    IO.inspect(key, label: "+++ letter keyed +++")
-    %{} = tally = Engine.make_move(socket.assigns.game_name, key)
+    game_name = socket.assigns.game_name
+    %{} = tally = Engine.make_move(game_name, key)
 
     {:noreply,
      assign(socket,
        letters: tally.letters,
        turns_left: tally.turns_left,
        guesses: tally.guesses,
-       message: message(tally.game_state, key)
+       message: message(tally.game_state, guess: key, game_name: game_name)
      )}
   end
 
@@ -79,10 +81,20 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
   ## Private functions
 
   # initializing, good guess, bad guess, already used, lost, won...
-  defp message(:initializing, _guess), do: "Initializing..."
-  defp message(:good_guess, _guess), do: "Good guess 😊!"
-  defp message(:bad_guess, guess), do: "Letter '#{guess}' not in the word 😟!"
-  defp message(:already_used, guess), do: "Letter '#{guess}' already used 😮!"
-  defp message(:lost, _guess), do: "Sorry, you lost 😢!"
-  defp message(:won, _guess), do: "Bravo, you won 😇!"
+  defp message(game_state, opts \\ [])
+  defp message(:initializing, _opts), do: "Good luck 😊❗"
+  defp message(:good_guess, _opts), do: "Good guess 😊❗"
+
+  defp message(:bad_guess, opts),
+    do: HTML.raw("Letter <span>#{opts[:guess]}</span> not in the word 😟❗")
+
+  defp message(:already_used, opts),
+    do: HTML.raw("Letter <span>#{opts[:guess]}</span> already used 😮❗")
+
+  defp message(:lost, opts) do
+    tally = Engine.guess_word(opts[:game_name])
+    HTML.raw("You lost. The word was <i>#{tally.letters}</i>.")
+  end
+
+  defp message(:won, _opts), do: "Bravo, you won 😇❗"
 end

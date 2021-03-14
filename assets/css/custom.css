@@ -84,17 +84,18 @@ header {
 /* Hangman */
 
 #hangman {
-  @apply max-w-2xl mx-auto text-center;
+  @apply max-w-3xl mx-auto text-center;
 
   h1 {
-    @apply mb-20;
+    @apply mb-10 md:mb-16;
   }
 
-  #main-grid {
-    @apply grid gap-x-8 gap-y-4 grid-cols-2 grid-flow-row-dense;
+  #grid {
+    @apply grid gap-x-8 gap-y-5 md:gap-y-2 grid-cols-1 md:grid-cols-2
+    grid-flow-row-dense;
 
     #new-game {
-      @apply col-start-1 col-span-1;
+      @apply md:col-start-1 md:col-span-1;
 
       button {
         @apply font-bold py-2 px-4 rounded bg-blue-500 text-white;
@@ -106,24 +107,31 @@ header {
     }
 
     #message {
-      @apply bg-blue-500 pt-2 col-start-2 col-span-1;
+      @apply bg-blue-500 md:col-start-2 md:col-span-1
+      text-center py-2 font-semibold;
+
+      span {
+        @apply text-yellow-350 font-bold;
+      }
     }
 
     #turns-left {
-      @apply col-start-2 col-span-1;
+      @apply md:col-start-2 md:col-span-1 my-auto font-semibold;
     }
 
     #word-so-far {
-      @apply col-start-2 col-span-1;
+      @apply md:col-start-2 md:col-span-1 text-3xl tracking-widest;
     }
 
     #guess-letters {
-      @apply col-start-2 col-span-1 grid gap-1 grid-cols-auto-fit;
+      @apply md:col-start-2 md:col-span-1 grid
+      gap-x-1 gap-y-3 md:gap-x-2 md:gap-y-4 grid-cols-auto-fit;
 
       button {
         @apply bg-transparent font-semibold border-2 border-indigo-500
-        rounded-full w-10 h-9 pb-1 focus:outline-none disabled:bg-red-500
-        disabled:opacity-50;
+        rounded-full w-10 h-10 pb-1 focus:outline-none
+        disabled:bg-indigo-500 disabled:opacity-60
+        disabled:cursor-not-allowed;
       }
 
       button:hover {
@@ -136,8 +144,9 @@ header {
     }
 
     #drawing {
-      @apply row-start-1 row-span-3;
-      .hide-component {
+      @apply md:row-start-1 md:row-span-3;
+
+      .conceal {
         @apply opacity-25;
       }
     }

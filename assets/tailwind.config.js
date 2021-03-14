@@ -95,6 +95,7 @@ module.exports = {
           '100': '#fdf6b2',
           '200': '#fce96a',
           '300': '#faca15',
+          '350': '#ffff00',
           '400': '#e3a008',
           '500': '#c27803',
           '600': '#9f580a',
@@ -184,7 +185,8 @@ module.exports = {
     extend: {
       //backgroundColor: ['responsive', 'hover', 'focus', 'active']
       backgroundColor: ['active', 'disabled'],
-      opacity: ['disabled']
+      opacity: ['disabled'],
+      cursor: ['disabled']
     }
   },
   plugins: []

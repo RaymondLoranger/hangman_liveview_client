@@ -4,7 +4,9 @@ defmodule Hangman.LiveView.ClientWeb.NewGameComponent do
   def render(assigns) do
     ~L"""
     <div id=new-game>
-      <button phx-click="new-game">New Game</button>
+      <button phx-click="new-game">
+        New Game
+      </button>
     </div>
     """
   end
