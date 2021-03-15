@@ -50,37 +50,6 @@ header {
   }
 }
 
-/* Light */
-
-#light {
-  @apply max-w-xl mx-auto text-center;
-
-  button {
-    @apply bg-transparent mx-1 py-2 px-4 border-cool-gray-400 border-2 rounded-lg shadow-sm transition ease-in-out duration-100 outline-none;
-  }
-
-  button:hover {
-    @apply bg-cool-gray-300;
-  }
-
-  img {
-    @apply w-10;
-  }
-
-  .meter {
-    @apply flex h-12 overflow-hidden text-base bg-cool-gray-300 rounded-lg mb-8;
-  }
-
-  .meter > span {
-    @apply flex flex-col justify-center text-cool-gray-900 text-center whitespace-nowrap bg-yellow-300 font-bold;
-    transition: width 1s ease;
-  }
-
-  form {
-    @apply mt-11 mx-4;
-  }
-}
-
 /* Hangman */
 
 #hangman {
@@ -121,6 +90,10 @@ header {
 
     #word-so-far {
       @apply md:col-start-2 md:col-span-1 text-3xl tracking-widest;
+
+      .reveal {
+        @apply opacity-40;
+      }
     }
 
     #guess-letters {

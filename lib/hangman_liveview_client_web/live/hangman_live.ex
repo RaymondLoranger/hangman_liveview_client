@@ -1,7 +1,11 @@
 defmodule Hangman.LiveView.ClientWeb.HangmanLive do
   use Hangman.LiveView.ClientWeb, :live_view
 
+  require Logger
+
   alias Hangman.Engine
+  alias Phoenix.HTML
+  alias Phoenix.LiveView.Socket
 
   alias Hangman.LiveView.ClientWeb.{
     DrawingComponent,
@@ -12,89 +16,60 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
     WordSoFarComponent
   }
 
-  alias Phoenix.HTML
+  @empty_assigns %{letters: [], guesses: [], turns_left: 0, message: ""}
 
-  require Logger
+  @spec mount(params :: map, session :: map, Socket.t()) :: {:ok, Socket.t()}
+  def mount(_, _, %Socket{connected?: false} = socket),
+    do: {:ok, assign(socket, @empty_assigns)}
 
-  def mount(_params, _session, socket) do
-    if connected?(socket) do
-      game_name = Engine.random_game_name()
-      :ok = Logger.info("Starting game #{game_name}...")
-      {:ok, _game_pid} = Engine.new_game(game_name)
-      %{} = tally = Engine.tally(game_name)
-      IO.inspect(tally, label: "!!! tally !!!")
+  def mount(_, _, socket), do: {:ok, new_game(socket)}
 
-      {:ok,
-       assign(socket,
-         game_name: game_name,
-         letters: tally.letters,
-         turns_left: tally.turns_left,
-         guesses: [],
-         message: message(tally.game_state)
-       )}
-    else
-      {:ok,
-       assign(socket,
-         game_name: "",
-         letters: [],
-         turns_left: 0,
-         guesses: [],
-         message: ""
-       )}
-    end
+  def handle_event("new-game", _params, socket) do
+    :ok = end_game(socket)
+    {:noreply, new_game(socket)}
   end
 
-  def handle_event("click", %{"guess" => guess}, socket) do
-    game_name = socket.assigns.game_name
-    %{} = tally = Engine.make_move(game_name, guess)
-
-    {:noreply,
-     assign(socket,
-       letters: tally.letters,
-       turns_left: tally.turns_left,
-       guesses: tally.guesses,
-       message: message(tally.game_state, guess: guess, game_name: game_name)
-     )}
-  end
-
-  def handle_event("new-game", params, socket) do
-    IO.inspect(params, label: "+++ new game clicked +++")
-    {:noreply, socket}
-  end
+  def handle_event("click", %{"guess" => guess}, socket),
+    do: {:noreply, make_move(socket, guess)}
 
   def handle_event("keyup", %{"key" => <<code>> = key}, socket)
-      when code in ?a..?z do
-    game_name = socket.assigns.game_name
-    %{} = tally = Engine.make_move(game_name, key)
-
-    {:noreply,
-     assign(socket,
-       letters: tally.letters,
-       turns_left: tally.turns_left,
-       guesses: tally.guesses,
-       message: message(tally.game_state, guess: key, game_name: game_name)
-     )}
-  end
+      when code in ?a..?z,
+      do: {:noreply, make_move(socket, key)}
 
   def handle_event("keyup", _params, socket), do: {:noreply, socket}
 
   ## Private functions
 
-  # initializing, good guess, bad guess, already used, lost, won...
-  defp message(game_state, opts \\ [])
-  defp message(:initializing, _opts), do: "Good luck 😊❗"
-  defp message(:good_guess, _opts), do: "Good guess 😊❗"
-
-  defp message(:bad_guess, opts),
-    do: HTML.raw("Letter <span>#{opts[:guess]}</span> not in the word 😟❗")
-
-  defp message(:already_used, opts),
-    do: HTML.raw("Letter <span>#{opts[:guess]}</span> already used 😮❗")
-
-  defp message(:lost, opts) do
-    tally = Engine.guess_word(opts[:game_name])
-    HTML.raw("You lost. The word was <i>#{tally.letters}</i>.")
+  defp end_game(%Socket{assigns: %{game_name: game_name}} = _socket) do
+    :ok = Logger.info("Ending game #{game_name}...")
+    :ok = Engine.end_game(game_name)
   end
 
-  defp message(:won, _opts), do: "Bravo, you won 😇❗"
+  defp new_game(socket) do
+    game_name = Engine.random_game_name()
+    :ok = Logger.info("Starting game #{game_name}...")
+    {:ok, _game_pid} = Engine.new_game(game_name)
+    %{} = tally = Engine.tally(game_name)
+    message = message(tally.game_state, nil)
+    assign(socket, tally) |> assign(message: message, game_name: game_name)
+  end
+
+  defp make_move(%Socket{assigns: %{game_name: game_name}} = socket, guess) do
+    %{} = tally = Engine.make_move(game_name, guess)
+    message = message(tally.game_state, guess)
+    assign(socket, tally) |> assign(message: message)
+  end
+
+  # initializing, good guess, bad guess, already used, lost, won...
+  defp message(:initializing, _guess), do: "Good luck 😊❗"
+  defp message(:good_guess, _guess), do: "Good guess 😊❗"
+
+  defp message(:bad_guess, guess),
+    do: HTML.raw("Letter <span>#{guess}</span> not in the word 😟❗")
+
+  defp message(:already_used, guess),
+    do: HTML.raw("Letter <span>#{guess}</span> already used 😮❗")
+
+  defp message(:lost, _guess), do: "Sorry, you lost 😂❗"
+  defp message(:won, _guess), do: "Bravo, you won 😇❗"
 end

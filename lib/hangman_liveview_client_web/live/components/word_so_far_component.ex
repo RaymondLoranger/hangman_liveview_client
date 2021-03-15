@@ -2,9 +2,16 @@ defmodule Hangman.LiveView.ClientWeb.WordSoFarComponent do
   use Hangman.LiveView.ClientWeb, :live_component
 
   def render(assigns) do
-    IO.inspect(assigns.letters, label: "+++ letters +++")
     ~L"""
-    <p id="word-so-far"><%= Enum.join(@letters, " ") %></p>
+    <p id="word-so-far">
+      <%= for letter <- @letters do %>
+        <%= if is_list(letter) do %>
+          <span class="reveal"><%= to_string(letter) %> </span>
+        <% else %>
+          <span class="letter"><%= letter %> </span>
+        <% end %>
+      <% end %>
+    </p>
     """
   end
 end

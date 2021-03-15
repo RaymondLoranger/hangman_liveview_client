@@ -16,10 +16,7 @@ defmodule Hangman.LiveView.ClientWeb.Router do
 
   scope "/", Hangman.LiveView.ClientWeb do
     pipe_through :browser
-
-    live "/", PageLive, :index
-    live "/light", LightLive
-    live "/hangman", HangmanLive
+    live "/", HangmanLive
   end
 
   # Other scopes may use custom stacks.
