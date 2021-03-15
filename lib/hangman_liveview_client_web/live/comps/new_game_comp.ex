@@ -1,4 +1,4 @@
-defmodule Hangman.LiveView.ClientWeb.NewGameComponent do
+defmodule Hangman.LiveView.ClientWeb.NewGameComp do
   use Hangman.LiveView.ClientWeb, :live_component
 
   def render(assigns) do

@@ -1,4 +1,4 @@
-defmodule Hangman.LiveView.ClientWeb.WordSoFarComponent do
+defmodule Hangman.LiveView.ClientWeb.WordSoFarComp do
   use Hangman.LiveView.ClientWeb, :live_component
 
   def render(assigns) do

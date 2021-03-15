@@ -1,4 +1,4 @@
-defmodule Hangman.LiveView.ClientWeb.TurnsLeftComponent do
+defmodule Hangman.LiveView.ClientWeb.TurnsLeftComp do
   use Hangman.LiveView.ClientWeb, :live_component
 
   def render(assigns) do

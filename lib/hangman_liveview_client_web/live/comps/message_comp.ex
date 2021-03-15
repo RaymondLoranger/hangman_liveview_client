@@ -1,4 +1,4 @@
-defmodule Hangman.LiveView.ClientWeb.MessageComponent do
+defmodule Hangman.LiveView.ClientWeb.MessageComp do
   use Hangman.LiveView.ClientWeb, :live_component
 
   def render(assigns) do

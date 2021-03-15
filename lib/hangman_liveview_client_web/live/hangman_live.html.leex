@@ -1,11 +1,12 @@
-<div id="hangman">
+<div id="game-field">
   <h1>Welcome to Hangman!!</h1>
   <div id="grid" phx-window-keyup="keyup">
-    <%= live_component @socket, WordSoFarComponent, letters: @letters %>
-    <%= live_component @socket, GuessLettersComponent, guesses: @guesses %>
-    <%= live_component @socket, TurnsLeftComponent, turns_left: @turns_left %>
-    <%= live_component @socket, MessageComponent, message: @message %>
-    <%= live_component @socket, DrawingComponent, turns_left: @turns_left %>
-    <%= live_component @socket, NewGameComponent %>
+    <%= live_component @socket, WordSoFarComp, letters: @letters %>
+    <%= live_component @socket, GuessLettersComp,
+                       letters: @letters, guesses: @guesses %>
+    <%= live_component @socket, TurnsLeftComp, turns_left: @turns_left %>
+    <%= live_component @socket, MessageComp, message: @message %>
+    <%= live_component @socket, DrawingComp, turns_left: @turns_left %>
+    <%= live_component @socket, NewGameComp %>
   </div>
 </div>
