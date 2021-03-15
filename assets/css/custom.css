@@ -80,7 +80,7 @@ header {
       text-center py-2 font-semibold;
 
       span {
-        @apply text-yellow-350 font-semibold;
+        @apply text-white font-medium;
       }
     }
 
@@ -90,7 +90,7 @@ header {
 
     #word-so-far { /* comp 1 */
       @apply md:col-start-2 md:col-span-1 text-3xl font-mono tracking-widest
-      h-12 mb-5;
+      h-12 mb-8;
 
       .reveal {
         @apply opacity-40;

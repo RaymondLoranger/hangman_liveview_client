@@ -64,10 +64,10 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
   defp message(:good_guess, _guess), do: "Good guess 😊❗"
 
   defp message(:bad_guess, guess),
-    do: HTML.raw("Letter <span>#{guess}</span> not in the word 😟❗")
+    do: HTML.raw("Letter <span> #{guess} </span> not in the word 😟❗")
 
   defp message(:already_used, guess),
-    do: HTML.raw("Letter <span>#{guess}</span> already used 😮❗")
+    do: HTML.raw("Letter <span> #{guess} </span> already used 😮❗")
 
   defp message(:lost, _guess), do: "Sorry, you lost 😂❗"
   defp message(:won, _guess), do: "Bravo, you won 😇❗"
