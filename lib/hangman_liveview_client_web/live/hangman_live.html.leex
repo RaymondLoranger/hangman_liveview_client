@@ -3,7 +3,7 @@
   <div id="grid" phx-window-keyup="keyup">
     <%= live_component @socket, WordSoFarComp, letters: @letters %>
     <%= live_component @socket, GuessLettersComp,
-                       letters: @letters, guesses: @guesses %>
+          letters: @letters, guesses: @guesses, game_state: @game_state %>
     <%= live_component @socket, TurnsLeftComp, turns_left: @turns_left %>
     <%= live_component @socket, MessageComp, message: @message %>
     <%= live_component @socket, DrawingComp, turns_left: @turns_left %>

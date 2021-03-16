@@ -8,11 +8,11 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
   alias Hangman.LiveView.ClientWeb.{DrawingComp, GuessLettersComp, NewGameComp}
   alias Hangman.LiveView.ClientWeb.{MessageComp, TurnsLeftComp, WordSoFarComp}
 
-  @init_assigns %{letters: [], guesses: [], turns_left: 7, message: ""}
+  @init %{letters: [], guesses: [], game_state: nil, turns_left: 7, message: ""}
 
   @spec mount(LiveView.unsigned_params(), map, Socket.t()) :: {:ok, Socket.t()}
   def mount(_params, _session, %Socket{connected?: false} = socket),
-    do: {:ok, assign(socket, @init_assigns)}
+    do: {:ok, assign(socket, @init)}
 
   def mount(_params, _session, socket), do: {:ok, new_game(socket)}
 
@@ -31,6 +31,13 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
       do: {:noreply, make_move(socket, key)}
 
   def handle_event("keyup", _params, socket), do: {:noreply, socket}
+
+  @spec terminate(term, Socket.t()) :: :ok
+  def terminate(reason, %Socket{assigns: %{game_name: game_name}} = _socket) do
+    :ok = Logger.warn("Ending game #{game_name}...")
+    :ok = Logger.warn("Reason: #{inspect(reason)}")
+    :ok = Engine.end_game(game_name)
+  end
 
   ## Private functions
 
@@ -64,10 +71,10 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
   defp message(:good_guess, _guess), do: "Good guess 😊❗"
 
   defp message(:bad_guess, guess),
-    do: HTML.raw("Letter <span> #{guess} </span> not in the word 😟❗")
+    do: HTML.raw("Letter <span>#{guess}</span> not in the word 😟❗")
 
   defp message(:already_used, guess),
-    do: HTML.raw("Letter <span> #{guess} </span> already used 😮❗")
+    do: HTML.raw("Letter <span>#{guess}</span> already used 😮❗")
 
   defp message(:lost, _guess), do: "Sorry, you lost 😂❗"
   defp message(:won, _guess), do: "Bravo, you won 😇❗"

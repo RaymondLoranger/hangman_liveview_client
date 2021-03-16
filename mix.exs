@@ -4,7 +4,7 @@ defmodule Hangman.LiveView.Client.MixProject do
   def project do
     [
       app: :hangman_liveview_client,
-      version: "0.1.4",
+      version: "0.1.5",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
