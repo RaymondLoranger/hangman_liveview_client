@@ -56,58 +56,34 @@ header {
   @apply max-w-3xl mx-auto text-center;
 
   h1 {
-    @apply mb-10 md:mb-16;
+    @apply mb-10 md:mb-16 md:ml-24;
   }
 
   #grid {
     @apply grid gap-x-8 gap-y-5 md:gap-y-2 grid-cols-1 md:grid-cols-2
     grid-flow-row-dense;
 
-    #new-game { /* comp 6 */
-      @apply md:col-start-1 md:col-span-1;
-
-      button {
-        @apply font-bold py-2 px-4 rounded bg-blue-500 text-white;
-      }
-
-      button:hover {
-        @apply bg-blue-700;
-      }
-    }
-
-    #message { /* comp 4 */
-      @apply bg-blue-500 md:col-start-2 md:col-span-1
-      text-center py-2 font-semibold;
-
-      span {
-        @apply text-white text-lg font-mono tracking-widest;
-      }
-    }
-
-    #turns-left { /* comp 3 */
-      @apply md:col-start-2 md:col-span-1 my-auto font-semibold;
-    }
-
-    #word-so-far { /* comp 1 */
-      @apply md:col-start-2 md:col-span-1 text-3xl font-mono tracking-widest
+    #word-letters { /* [comp-1...] */
+      @apply md:col-start-2 md:col-span-1 text-3xl font-mono tracking-wide
       h-12 mb-8;
 
-      .reveal {
-        @apply opacity-40;
+      .unveil {
+        @apply opacity-30;
+      }
+
+      .appear {
+        @apply text-blue-700;
       }
     }
 
-    #guess-letters { /* comp 2 */
-      @apply md:col-start-2 md:col-span-1
-      grid justify-items-center items-center
-      gap-x-1 gap-y-3 md:gap-x-2 md:gap-y-4
-      grid-cols-auto-fit;
+    #guess-letters { /* [comp-2...] */
+      @apply md:col-start-2 md:col-span-1 grid justify-items-center items-center
+      gap-x-1 gap-y-3 md:gap-x-2 md:gap-y-4 grid-cols-auto-fit;
 
       button {
         @apply bg-transparent font-semibold border-2 border-indigo-500
-        rounded-full w-10 h-10 pb-1 focus:outline-none
-        disabled:bg-indigo-500 disabled:opacity-70
-        disabled:cursor-not-allowed;
+        rounded-full w-10 h-10 pb-1 focus:outline-none disabled:bg-indigo-500
+        disabled:opacity-70 disabled:cursor-not-allowed;
       }
 
       button.correct {
@@ -127,15 +103,40 @@ header {
       }
     }
 
-    #drawing { /* comp 5 */
+    #turns-left { /* comp-3 */
+      @apply md:col-start-2 md:col-span-1 my-auto font-semibold;
+    }
+
+    #message { /* comp-4 */
+      @apply bg-blue-500 md:col-start-2 md:col-span-1
+      text-center py-2 font-semibold;
+
+      span {
+        @apply text-white tracking-widest;
+      }
+    }
+
+    #drawing { /* comp-5 */
       @apply md:row-start-1 md:row-span-3;
 
       path {
         @apply transition-opacity;
       }
 
-      .conceal {
+      .blur {
         @apply opacity-25;
+      }
+    }
+
+    #new-game { /* comp-6 */
+      @apply md:col-start-1 md:col-span-1;
+
+      button {
+        @apply font-bold py-2 px-4 rounded bg-blue-500 text-white;
+      }
+
+      button:hover {
+        @apply bg-blue-700;
       }
     }
   }
