@@ -4,7 +4,7 @@ defmodule Hangman.LiveView.Client.MixProject do
   def project do
     [
       app: :hangman_liveview_client,
-      version: "0.1.6",
+      version: "0.1.7",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -38,6 +38,7 @@ defmodule Hangman.LiveView.Client.MixProject do
       {:floki, ">= 0.27.0", only: :test},
       {:gettext, "~> 0.11"},
       {:hangman_engine, github: "RaymondLoranger/hangman_engine"},
+      {:hangman_game, github: "RaymondLoranger/hangman_game"},
       {:jason, "~> 1.0"},
       {:log_reset, "~> 0.1"},
       {:logger_file_backend, "~> 0.0.11"},

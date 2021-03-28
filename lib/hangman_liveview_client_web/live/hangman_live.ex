@@ -6,12 +6,14 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
   alias Hangman.LiveView.ClientWeb.{DrawingComp, GuessLetterComp, NewGameComp}
   alias Hangman.LiveView.ClientWeb.{MessageComp, TurnsLeftComp, WordLetterComp}
 
+  @impl LiveView
   @spec mount(LiveView.unsigned_params(), map, Socket.t()) :: {:ok, Socket.t()}
   def mount(_params, _session, %Socket{connected?: false} = socket),
     do: {:ok, Helper.init_game(socket)}
 
   def mount(_params, _session, socket), do: {:ok, Helper.new_game(socket)}
 
+  @impl LiveView
   @spec handle_event(event :: binary, LiveView.unsigned_params(), Socket.t()) ::
           {:noreply, Socket.t()}
   def handle_event("new-game", _params, socket) do
@@ -28,6 +30,7 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive do
 
   def handle_event("keyup", _params, socket), do: {:noreply, socket}
 
+  @impl LiveView
   @spec terminate(term, Socket.t()) :: :ok
   def terminate(reason, socket), do: :ok = Helper.terminate(reason, socket)
 end

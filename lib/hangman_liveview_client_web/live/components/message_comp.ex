@@ -1,7 +1,7 @@
 defmodule Hangman.LiveView.ClientWeb.MessageComp do
   use Hangman.LiveView.ClientWeb, :live_component
 
-  alias Hangman.Engine.Game
+  alias Hangman.Game
   alias Phoenix.HTML
   alias Phoenix.LiveView.{Rendered, Socket}
 

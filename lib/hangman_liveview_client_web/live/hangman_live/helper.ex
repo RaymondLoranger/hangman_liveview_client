@@ -4,7 +4,7 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive.Helper do
   require Logger
 
   alias Phoenix.LiveView.Socket
-  alias Hangman.{Engine, Engine.Game}
+  alias Hangman.{Engine, Game}
 
   @init_tally Game.new("", "") |> Game.tally()
 
@@ -19,7 +19,7 @@ defmodule Hangman.LiveView.ClientWeb.HangmanLive.Helper do
 
   @spec new_game(Socket.t()) :: Socket.t()
   def new_game(socket) do
-    game_name = Engine.random_game_name()
+    game_name = Game.random_name()
     :ok = Logger.info("Starting game #{game_name}...")
     {:ok, _game_pid} = Engine.new_game(game_name)
     %{} = tally = Engine.tally(game_name)

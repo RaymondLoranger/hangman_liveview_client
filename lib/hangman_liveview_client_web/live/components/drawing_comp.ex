@@ -1,7 +1,7 @@
 defmodule Hangman.LiveView.ClientWeb.DrawingComp do
   use Hangman.LiveView.ClientWeb, :live_component
 
-  alias Hangman.Engine.Game
+  alias Hangman.Game
 
   @spec class(Game.turns_left(), non_neg_integer) :: String.t() | nil
   defp class(turns_left, gate) when turns_left > gate, do: "blur"

@@ -1,7 +1,7 @@
 defmodule Hangman.LiveView.ClientWeb.WordLetterComp do
   use Hangman.LiveView.ClientWeb, :live_component
 
-  alias Hangman.Engine.Game
+  alias Hangman.Game
   alias Phoenix.LiveView.{Rendered, Socket}
 
   @spec render(Socket.assigns()) :: Rendered.t()
