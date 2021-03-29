@@ -1,4 +1,4 @@
-# Hangman.LiveView.Client
+# Hangman LiveView Client
 
 To start your Phoenix server:
 
