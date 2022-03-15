@@ -15,8 +15,12 @@ config :hangman_liveview_client, Hangman.LiveView.ClientWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "eZjW04pWBizU4Ciei3FF22wYfMY6//nlyvgLEd05ulzZMRYcs4iFJvhy1HyndpD3",
   watchers: [
-    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    # Start the esbuild watcher by calling
+    # Esbuild.install_and_run(:default, args)
+    esbuild:
+      {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    # Add Tailwind to list of watchers
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
