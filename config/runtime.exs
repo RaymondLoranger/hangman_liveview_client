@@ -9,7 +9,8 @@ import Config
 
 # Start the phoenix server if environment is set and running in a release
 if System.get_env("PHX_SERVER") && System.get_env("RELEASE_NAME") do
-  config :hangman_liveview_client, Hangman.LiveView.ClientWeb.Endpoint, server: true
+  config :hangman_liveview_client, Hangman.LiveView.ClientWeb.Endpoint,
+    server: true
 end
 
 if config_env() == :prod do

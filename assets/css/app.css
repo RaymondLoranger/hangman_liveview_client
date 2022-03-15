@@ -173,7 +173,7 @@ ul.examples li a {
 /*************************************************/
 
 .phx-hero {
-  @apply text-center bg-gray-200 rounded-md py-8 px-4 mt-0 mb-4;
+  @apply text-center bg-cool-gray-400 rounded-md py-8 px-4 mt-0 mb-4;
 }
 
 .phx-hero  h1 {
@@ -182,7 +182,7 @@ ul.examples li a {
 }
 
 .phx-hero  p {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 125%;
   margin-bottom: 2rem;
 }

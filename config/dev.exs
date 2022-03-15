@@ -13,7 +13,8 @@ config :hangman_liveview_client, Hangman.LiveView.ClientWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "eZjW04pWBizU4Ciei3FF22wYfMY6//nlyvgLEd05ulzZMRYcs4iFJvhy1HyndpD3",
+  secret_key_base:
+    "eZjW04pWBizU4Ciei3FF22wYfMY6//nlyvgLEd05ulzZMRYcs4iFJvhy1HyndpD3",
   watchers: [
     # Start the esbuild watcher by calling
     # Esbuild.install_and_run(:default, args)

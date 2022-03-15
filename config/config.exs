@@ -13,7 +13,11 @@ config :hangman_liveview_client,
 # Configures the endpoint
 config :hangman_liveview_client, Hangman.LiveView.ClientWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: Hangman.LiveView.ClientWeb.ErrorView, accepts: ~w(html json), layout: false],
+  render_errors: [
+    view: Hangman.LiveView.ClientWeb.ErrorView,
+    accepts: ~w(html json),
+    layout: false
+  ],
   pubsub_server: Hangman.LiveView.Client.PubSub,
   live_view: [signing_salt: "c90ywlA8"]
 

@@ -6,7 +6,7 @@ except = []
 inputs = ["*.{ex,exs}", "{config,lib,test}/**/*.{ex,exs}"]
 
 [
-  import_deps: [:ecto, :phoenix, :phx_formatter],
+  import_deps: [:phoenix, :phx_formatter],
   inputs: matches.(inputs) -- matches.(except),
   line_length: 80
 ]
