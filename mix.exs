@@ -50,12 +50,15 @@ defmodule Hangman.LiveView.Client.MixProject do
       # {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:logger_file_backend, "~> 0.0.11"},
       {:log_reset, "~> 0.1"},
-      {:phx_formatter, "~> 0.1", only: :dev, runtime: false}
+      {:phx_formatter, "~> 0.1", only: :dev, runtime: false},
+      {:hangman_engine, "~> 0.1"},
+      {:hangman_game, "~> 0.1"}
     ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
-  # For example, to install project dependencies and perform other setup tasks, run:
+  # For example, to install project dependencies and
+  # perform other setup tasks, run:
   #
   #     $ mix setup
   #

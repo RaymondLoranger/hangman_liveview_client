@@ -14,7 +14,8 @@ defmodule Hangman.LiveView.Client.Application do
       {Phoenix.PubSub, name: Hangman.LiveView.Client.PubSub},
       # Start the Endpoint (http/https)
       Hangman.LiveView.ClientWeb.Endpoint
-      # Start a worker by calling: Hangman.LiveView.Client.Worker.start_link(arg)
+      # Start a worker by calling:
+      # Hangman.LiveView.Client.Worker.start_link(arg)
       # {Hangman.LiveView.Client.Worker, arg}
     ]
 

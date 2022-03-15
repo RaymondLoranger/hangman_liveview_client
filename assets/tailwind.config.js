@@ -11,6 +11,7 @@ module.exports = {
       pattern: /(border|text)-(green|blue|indigo|purple|pink)-(6|7|8)00/
     }
   ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -26,7 +27,18 @@ module.exports = {
           '800': '#27303f',
           '900': '#1a202e',
         }
+      },
+      gridTemplateColumns: {
+        'auto-fit': 'repeat(auto-fit, minmax(3rem, 1fr))'
       }
+    }
+  },
+  variants: {
+    extend: {
+      //backgroundColor: ['responsive', 'hover', 'focus', 'active']
+      backgroundColor: ['active', 'disabled'],
+      opacity: ['disabled'],
+      cursor: ['disabled']
     }
   },
   plugins: [
