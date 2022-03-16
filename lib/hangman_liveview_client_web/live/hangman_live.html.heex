@@ -1,0 +1,23 @@
+<div id="game-field">
+  <h1>Welcome to Hangman!!</h1>
+  <div id="grid" phx-window-keyup="keyup">
+    <!-- Word Letters -->
+    <p id="word-letters" phx-update="replace">
+      <%= for {letter, id} <- Enum.with_index(@letters) do %>
+        <.word_letter id={to_string(id)} letter={letter}/>
+      <% end %>
+    </p>
+    <!-- Guess Letters -->
+    <div id="guess-letters" phx-update="replace">
+      <%= for code <- ?a..?z do %>
+        <.guess_letter id={<<code>>} letter={<<code>>}
+            disabled={<<code>> in @guesses} correct={<<code>> in @letters}
+            game_over={@game_state in [:lost, :won]}/>
+      <% end %>
+    </div>
+    <.turns_left turns_left={@turns_left}/>
+    <.message game_state={@game_state} guess={@guess}/>
+    <.live_component module={DrawingComp} id="svg" turns_left={@turns_left}/>
+    <.new_game/>
+  </div>
+</div>

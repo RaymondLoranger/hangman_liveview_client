@@ -11,7 +11,6 @@ module.exports = {
       pattern: /(border|text)-(green|blue|indigo|purple|pink)-(6|7|8)00/
     }
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
