@@ -13,7 +13,8 @@ To use `Hangman LiveView Client` locally, clone and compile it:
   - `mix deps.get`
   - `mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit [`localhost:4000/hangman`](http://localhost:4000/hangman)
+from your browser.
 
 ## Game in progress
 
