@@ -4,6 +4,7 @@ defmodule Hangman.LiveView.ClientWeb.HangmanComp do
   import Hangman.LiveView.ClientWeb.HangmanView, only: [render: 2]
 
   alias Hangman.Game
+  alias Phoenix.HTML
   alias Phoenix.LiveView.{Rendered, Socket}
 
   @spec word_letter(Socket.assigns()) :: Rendered.t()
@@ -63,19 +64,18 @@ defmodule Hangman.LiveView.ClientWeb.HangmanComp do
   defp clue_letter(_charlist), do: "unveil"
 
   # initializing, good guess, bad guess, already used, lost, won...
-  @spec message(Game.state(), Game.letter() | nil) ::
-          String.t() | Phoenix.HTML.safe()
+  @spec message(Game.state(), Game.letter() | nil) :: String.t() | HTML.safe()
   defp message(:initializing, _guess), do: "Good luck 😊❗"
   defp message(:good_guess, _guess), do: "Good guess 😊❗"
 
   defp message(:bad_guess, guess),
-    do: Phoenix.HTML.raw("Letter <span>#{guess}</span> not in the word 😟❗")
+    do: HTML.raw("Letter <span>#{guess}</span> not in the word 😟❗")
 
   defp message(:already_used, guess),
-    do: Phoenix.HTML.raw("Letter <span>#{guess}</span> already used 😮❗")
+    do: HTML.raw("Letter <span>#{guess}</span> already used 😮❗")
 
-  defp message(:lost, _guess), do: "Sorry, you lost 😂❗"
-  defp message(:won, _guess), do: "Bravo, you won 😇❗"
+  defp message(:lost, _guess), do: HTML.raw("Sorry, <span>you lost</span> 😂❗")
+  defp message(:won, _guess), do: HTML.raw("Bravo, <span>you won</span> 😇❗")
 
   @spec guess_letter(boolean, boolean) :: String.t() | nil
   defp guess_letter(correct, game_over)

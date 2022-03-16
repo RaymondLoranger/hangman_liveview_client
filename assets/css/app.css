@@ -54,12 +54,12 @@ ul.examples li a {
 
 #game-field #grid {
   @apply grid gap-x-8 gap-y-5 md:gap-y-2 grid-cols-1 md:grid-cols-2
-  grid-flow-row-dense;
+  grid-flow-row-dense mb-4;
 }
 
 #game-field #grid #word-letters { /* [comp-1...] */
-  @apply md:col-start-2 md:col-span-1 text-3xl font-mono tracking-wide h-12
-  mb-8;
+  @apply md:col-start-2 md:col-span-1 text-3xl font-mono tracking-wide h-10
+  mb-4;
 }
 
 #game-field #grid #word-letters .unveil {
@@ -93,7 +93,7 @@ ul.examples li a {
 }
 
 #game-field #grid #turns-left { /* comp-3 */
-  @apply md:col-start-2 md:col-span-1 my-auto font-semibold;
+  @apply md:col-start-2 md:col-span-1 my-auto font-semibold py-2;
 }
 
 #game-field #grid #message { /* comp-4 */
@@ -102,7 +102,7 @@ ul.examples li a {
 }
 
 #game-field #grid #message span {
-  @apply text-white tracking-widest;
+  @apply text-white tracking-widest animate-pulse font-medium;
 }
 
 #game-field #grid #drawing { /* comp-5 */
@@ -118,7 +118,7 @@ ul.examples li a {
 }
 
 #game-field #grid #new-game button {
-  @apply font-bold py-2 px-4 rounded bg-blue-500 text-white;
+  @apply font-bold py-2 px-4 rounded bg-blue-500 text-white w-5/12;
 }
 
 #game-field #grid #new-game button:hover {
@@ -289,6 +289,7 @@ ul.examples li a {
 
 .phx-logo img {
   width: auto;
+  height: 4rem;
   display: block;
 }
 
@@ -320,7 +321,7 @@ header nav li {
   white-space: nowrap;
 }
 header nav ul {
-  margin: 1rem;
+  margin: 4px;
   margin-top: 0;
 }
 header nav a {
