@@ -4,7 +4,7 @@ defmodule Hangman.LiveView.Client.MixProject do
   def project do
     [
       app: :hangman_liveview_client,
-      version: "0.1.1",
+      version: "0.1.2",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
@@ -70,7 +70,7 @@ defmodule Hangman.LiveView.Client.MixProject do
       # Added dependencies...
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
-      # {:ex_doc, "~> 0.22", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:logger_file_backend, "~> 0.0.11"},
       {:log_reset, "~> 0.1"},
       {:phx_formatter, "~> 0.1", only: :dev, runtime: false},
