@@ -1,5 +1,5 @@
-defmodule Hangman.LiveView.ClientWeb.DrawingComp do
-  use Hangman.LiveView.ClientWeb, :live_component
+defmodule Hangman.LiveView.ClientWeb.HangmanView do
+  use Hangman.LiveView.ClientWeb, :view
 
   alias Hangman.Game
 

@@ -9,8 +9,31 @@ defmodule Hangman.LiveView.Client.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      name: "Hangman LiveView Client",
+      source_url: source_url(),
+      description: description(),
+      package: package(),
       aliases: aliases(),
       deps: deps()
+    ]
+  end
+
+  defp source_url do
+    "https://github.com/RaymondLoranger/hangman_liveview_client"
+  end
+
+  defp description do
+    """
+    LiveView client for the Hangman Game.
+    """
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README*"],
+      maintainers: ["Raymond Loranger"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => source_url()}
     ]
   end
 

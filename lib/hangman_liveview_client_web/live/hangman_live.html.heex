@@ -17,7 +17,7 @@
     </div>
     <.turns_left turns_left={@turns_left}/>
     <.message game_state={@game_state} guess={@guess}/>
-    <.live_component module={DrawingComp} id="svg" turns_left={@turns_left}/>
-    <.new_game/>
+    <.drawing turns_left={@turns_left}/>
+    <.new_game_button/>
   </div>
 </div>

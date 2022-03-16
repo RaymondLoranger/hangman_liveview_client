@@ -1,5 +1,7 @@
-defmodule Hangman.LiveView.ClientWeb.GameComp do
+defmodule Hangman.LiveView.ClientWeb.HangmanComp do
   use Phoenix.Component
+
+  import Hangman.LiveView.ClientWeb.HangmanView, only: [render: 2]
 
   alias Hangman.Game
   alias Phoenix.LiveView.{Rendered, Socket}
@@ -15,11 +17,13 @@ defmodule Hangman.LiveView.ClientWeb.GameComp do
 
   def turns_left(assigns) do
     ~H"""
-    <p id="turns-left">Turns left: <%= @turns_left %></p>
+    <p id="turns-left" class={if @turns_left == 1, do: "bg-red-500 text-white"}>
+      Turns left: <%= @turns_left %>
+    </p>
     """
   end
 
-  def new_game(assigns) do
+  def new_game_button(assigns) do
     ~H"""
     <div id="new-game">
       <button phx-click="new-game">New Game</button>
@@ -29,7 +33,9 @@ defmodule Hangman.LiveView.ClientWeb.GameComp do
 
   def message(assigns) do
     ~H"""
-    <p id="message"><%= message(@game_state, @guess) %></p>
+    <p id="message">
+      <%= message(@game_state, @guess) %>
+    </p>
     """
   end
 
@@ -39,6 +45,12 @@ defmodule Hangman.LiveView.ClientWeb.GameComp do
         disabled={@disabled} class={guess_letter(@correct, @game_over)}>
       <%= @letter %>
     </button>
+    """
+  end
+
+  def drawing(assigns) do
+    ~H"""
+    <%= render "_drawing.html", assigns %>
     """
   end
 

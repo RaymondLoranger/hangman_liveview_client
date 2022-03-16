@@ -1,10 +1,9 @@
-<div id="drawing">
-   <svg xmlns="http://www.w3.org/2000/svg" x-height="155mm"
-      x-width="130mm" version="1.1" viewBox="0 0 460.9899 548.03535">
+<svg id="drawing" xmlns="http://www.w3.org/2000/svg" x-height="155mm"
+     x-width="130mm" version="1.1" viewBox="0 0 460.9899 548.03535">
 
    <g transform="translate(-27.2 -220)">
 
-      <!-- 1 -->
+      <!-- 1 --> <!-- rope remains opaque if turns left > 6 -->
       <path id="rope" class={opacity(@turns_left, 6)}
             style="fill: #a28d5d; stroke: #a28d5d"
             d="m392 243c0.0695 21.3-1.32
@@ -60,7 +59,7 @@
                3.66-5.76 2.36-29.4 14.5-13.5 2.99 9.85-7.48 19.7-14.9
                29.6-22.4z"/>
 
-      <!-- 6 -->
+      <!-- 6 --> <!-- arm1 remains opaque if turns left > 0 -->
       <path id="arm1" class={opacity(@turns_left, 0)}
             style="fill: #777; stroke: #777; stroke-width:3.5;"
             d="m324 512c8.62-14.1 21.6-24.6 33.8-35.3-0.693-4.06
@@ -68,7 +67,7 @@
                5.52-0.197-7.1 5.22-1.45 6.29-8.4 12.7-18 25.2-30.9
                33.5-5.91 10.6-15.5 19-27.2 22.6z"/>
 
-      <!-- 7 -->
+      <!-- 7 --> <!-- rope remains opaque if turns left > 1 -->
       <path id="arm2" class={opacity(@turns_left, 1)}
             style="fill: #777; stroke: #777; stroke-width: 3.5;"
             d="m404 441c-2.77 11 12.8 8.21 14.7 17.3 5.98 4.84 15.2 7.98
@@ -76,7 +75,7 @@
                5.71-14.3-6.87-17.9-13.2-7.1-2.4-16-14.6-18.3-16.8-3.98-3.2-9.01-7.24-11.2-10.9
                3.97-4.36 10.1-5.98 14.7-9.59z"/>
 
-      <!-- 8 -->
+      <!-- 8 --> <!-- leg1 remains opaque if turns left > 2 -->
       <path id="leg1" class={opacity(@turns_left, 2)}
             style="fill: #777; stroke: #777; stroke-width: 3.5;"
             d="m390 567c0.232 6.64-9.96 13-13.5 19.6-3.54 7.9-10.2
@@ -84,7 +83,7 @@
                1.26-5.7-4.31 5.68-12.7 10.4-26 19.1-37 5.83-7.71 11.1-16
                18.1-22.8 3.83-3 8.35-4.96 12.9-6.48z"/>
 
-      <!-- 9 -->
+      <!-- 9 --> <!-- leg2 remains opaque if turns left > 3 -->
       <path id="leg2" class={opacity(@turns_left, 3)}
             style="fill: #777; stroke: #777; stroke-width: 3.5;"
             d="m399 568c-3.45 8.95 2.33 17.4 3.11 26.1-2.56 8.71 2.93
@@ -92,7 +91,7 @@
                3.54-17.5-1.07-13.1-9.18-6.86-2.85-9.21-12.5-11.1-18-1.1-11.3-3.95-22.5-5.49-33.7
                0.64-7.97 10.3-9.48 15.9-12.9z"/>
 
-      <!-- 10 -->
+      <!-- 10 --> <!-- body remains opaque if turns left > 4 -->
       <path id="body" class={opacity(@turns_left, 4)}
             style="fill: #777; stroke: #777; stroke-width: 3.5;"
             d="m397 430c-8.22 13.8 0.942 30.2-3.8 44.8 0.446 18.4 0.722
@@ -104,7 +103,7 @@
                9.58-4.68z"/>
 
 
-      <!-- 11 -->
+      <!-- 11 --> <!-- head remains opaque if turns left > 5 -->
       <path id="head" class={opacity(@turns_left, 5)}
             style="fill:none; stroke: #777; stroke-width: 3.5;"
             d="m440 389c-0.665 10.8-6.11 21.3-15.1 29.3-7.12 6.41-16.2
@@ -185,5 +184,4 @@
 
    </g>
 
-   </svg>
-</div>
+</svg>

@@ -1,18 +1,20 @@
-# Hangman.LiveView.Client
+# Hangman LiveView Client
 
-To start your Phoenix server:
+LiveView client for the _Hangman Game_.
 
-  * Install dependencies with `mix deps.get`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
+
+## Usage
+
+To use `Hangman LiveView Client` locally, clone and compile it:
+
+  - `git clone https://github.com/RaymondLoranger/hangman_liveview_client`
+  - `cd hangman_liveview_client`
+  - `mix deps.get`
+  - `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Game in progress
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+## ![game](assets/images/game_in_progress.png)
