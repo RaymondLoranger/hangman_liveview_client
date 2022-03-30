@@ -8,10 +8,9 @@
     <%= live_title_tag assigns[:page_title] || "Hangman.LiveView.Client",
           suffix: " · Phoenix Framework" %>
     <link phx-track-static rel="stylesheet"
-      href={Routes.static_path(@conn, "/assets/app.css")}/>
+        href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript"
-      src={Routes.static_path(@conn, "/assets/app.js")}>
-    </script>
+        src={Routes.static_path(@conn, "/assets/app.js")}/>
   </head>
   <body>
     <header>
@@ -27,7 +26,7 @@
         </nav>
         <a href="https://phoenixframework.org/" class="phx-logo">
           <img src={Routes.static_path(@conn, "/images/phoenix.png")}
-            alt="Phoenix Framework Logo"/>
+              alt="Phoenix Framework Logo"/>
         </a>
       </section>
     </header>
