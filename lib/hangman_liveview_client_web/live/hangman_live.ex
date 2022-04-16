@@ -1,8 +1,6 @@
 defmodule Hangman.LiveView.ClientWeb.HangmanLive do
   use Hangman.LiveView.ClientWeb, :live_view
 
-  import Hangman.LiveView.ClientWeb.HangmanComp
-
   alias Hangman.LiveView.Client
   alias Phoenix.LiveView
   alias Phoenix.LiveView.Socket

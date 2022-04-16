@@ -1,9 +1,8 @@
-defmodule Hangman.LiveView.ClientWeb.HangmanComp do
+defmodule Hangman.LiveView.ClientWeb.LiveHelpers do
   use Phoenix.Component
 
-  import Hangman.LiveView.ClientWeb.HangmanView, only: [render: 2]
-
   alias Hangman.Game
+  alias Hangman.LiveView.ClientWeb.HangmanView
   alias Phoenix.HTML
   alias Phoenix.LiveView.{Rendered, Socket}
 
@@ -51,7 +50,7 @@ defmodule Hangman.LiveView.ClientWeb.HangmanComp do
 
   def drawing(assigns) do
     ~H"""
-    <%= render "_drawing.html", assigns %>
+    <%= HangmanView.render("_drawing.html", assigns) %>
     """
   end
 
