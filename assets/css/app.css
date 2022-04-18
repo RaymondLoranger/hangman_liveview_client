@@ -2,17 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* This file is for your main application CSS */
+/*
+ * ┌─────────────────────────────────────────────┐
+ * │ This file is for your main application CSS. │
+ * └─────────────────────────────────────────────┘
+ */
 
 body {
   @apply antialiased relative bg-cool-gray-200 font-sans;
 }
 
-/*
-header {
-  @apply mb-8;
+header .container {
+  @apply flex flex-row justify-evenly max-w-6xl mx-auto px-6;
 }
-*/
 
 .container {
   @apply max-w-6xl mx-auto px-6;
@@ -126,9 +128,11 @@ ul.examples li a {
   @apply bg-blue-700;
 }
 
-/******************************************/
-/* Alerts and form errors used by phx.new */
-/******************************************/
+/*
+ * ┌────────────────────────────────────────────────┐
+ * │ ••• Alerts and form errors used by phx.new ••• │
+ * └────────────────────────────────────────────────┘
+ */
 
 .alert {
   padding: 15px;
@@ -163,9 +167,11 @@ ul.examples li a {
   margin: -1rem 0 2rem;
 }
 
-/****************************************************/
-/* LiveView specific classes for your customization */
-/****************************************************/
+/*
+ * ┌──────────────────────────────────────────────────────────┐
+ * │ ••• LiveView specific classes for your customization ••• │
+ * └──────────────────────────────────────────────────────────┘
+ */
 
 .phx-no-feedback.invalid-feedback,
 .phx-no-feedback .invalid-feedback {
@@ -250,12 +256,14 @@ ul.examples li a {
   100% { opacity: 0; }
 }
 
-/*************************************************/
-/* Phoenix specific classes for generated files. */
-/*************************************************/
+/*
+ * ┌──────────────────────────────────────────────────────┐
+ * │ ••• Phoenix specific classes for generated files ••• │
+ * └──────────────────────────────────────────────────────┘
+ */
 
 .phx-hero {
-  @apply text-center bg-cool-gray-400 rounded-md py-8 px-4 mt-0 mb-4;
+  @apply text-center bg-cool-gray-400 rounded-md py-8 px-4 mt-0 mb-4 mx-12;
 }
 
 .phx-hero  h1 {
