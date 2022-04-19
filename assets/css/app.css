@@ -16,6 +16,18 @@ header .container {
   @apply flex flex-row justify-evenly max-w-6xl mx-auto px-6;
 }
 
+header .container a {
+  @apply text-indigo-600 hover:brightness-150;
+}
+
+header .container li {
+  @apply text-right;
+}
+
+section a {
+  @apply text-blue-800 hover:brightness-150;
+}
+
 .container {
   @apply max-w-6xl mx-auto px-6;
 }
@@ -41,9 +53,9 @@ ul.examples li a {
 }
 
 /*
- * ┌─────────────────────────────┐
- * │ Hangman LiveView Client CSS │
- * └─────────────────────────────┘
+ * ╔═════════════════════════════════════╗
+ * ║ ••• Hangman LiveView Client CSS ••• ║
+ * ╚═════════════════════════════════════╝
  */
 
  #game-field {
