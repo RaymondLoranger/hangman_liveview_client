@@ -16,7 +16,7 @@ config :hangman_liveview_client, Hangman.LiveView.ClientWeb.Endpoint,
   secret_key_base:
     "eZjW04pWBizU4Ciei3FF22wYfMY6//nlyvgLEd05ulzZMRYcs4iFJvhy1HyndpD3",
   watchers: [
-    # Start the esbuild watcher by calling
+    # Start the esbuild watcher by calling:
     # Esbuild.install_and_run(:default, args)
     esbuild:
       {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
