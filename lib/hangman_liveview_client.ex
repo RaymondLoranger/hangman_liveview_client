@@ -1,10 +1,10 @@
 defmodule Hangman.LiveView.Client do
   import Phoenix.LiveView, only: [assign: 2]
 
-  require Logger
-
   alias Phoenix.LiveView.Socket
   alias Hangman.{Engine, Game}
+
+  require Logger
 
   @init_tally Game.new("", "") |> Game.tally()
 

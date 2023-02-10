@@ -4,10 +4,10 @@ defmodule Hangman.LiveView.Client.MixProject do
   def project do
     [
       app: :hangman_liveview_client,
-      version: "0.1.15",
+      version: "0.1.16",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      # compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       name: "Hangman LiveView Client",
       source_url: source_url(),
