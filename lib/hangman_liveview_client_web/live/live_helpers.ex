@@ -41,8 +41,13 @@ defmodule Hangman.LiveView.ClientWeb.LiveHelpers do
 
   def guess_letter(assigns) do
     ~H"""
-    <button id={@id} phx-click="click" phx-value-guess={@letter}
-        disabled={@disabled} class={guess_letter(@correct, @game_over)}>
+    <button
+      id={@id}
+      phx-click="click"
+      phx-value-guess={@letter}
+      disabled={@disabled}
+      class={guess_letter(@correct, @game_over)}
+    >
       <%= @letter %>
     </button>
     """
