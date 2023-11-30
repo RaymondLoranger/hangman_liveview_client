@@ -34,8 +34,8 @@ defmodule Hangman.LiveView.Client do
 
   @spec terminate(term, Socket.t()) :: :ok
   def terminate(reason, %Socket{assigns: %{game_name: game_name}} = _socket) do
-    :ok = Logger.warn("Ending game #{game_name}...")
-    :ok = Logger.warn("Reason: #{inspect(reason)}")
+    :ok = Logger.warning("Ending game #{game_name}...")
+    :ok = Logger.warning("Reason: #{inspect(reason)}")
     :ok = Engine.end_game(game_name)
   end
 end

@@ -61,11 +61,11 @@ defmodule Hangman.LiveView.ClientWeb.LiveHelpers do
 
   ## Private functions
 
-  @spec clue_letter(Game.letter() | Game.underline() | charlist) ::
+  @spec clue_letter(Game.letter() | Game.underline() | [Game.letter()]) ::
           String.t() | nil
   defp clue_letter("_"), do: nil
   defp clue_letter(letter) when is_binary(letter), do: "appear"
-  defp clue_letter(_charlist), do: "unveil"
+  defp clue_letter(_single_letter_list), do: "unveil"
 
   # initializing, good guess, bad guess, already used, lost, won...
   @spec message(Game.state(), Game.letter() | nil) :: String.t() | HTML.safe()
